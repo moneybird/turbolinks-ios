@@ -32,7 +32,6 @@ open class VisitableView: UIView {
         self.visitable = visitable
         addSubview(webView)
         addFillConstraints(forView: webView)
-        updateContentInsets()
         installRefreshControl()
         showOrHideWebView()
     }
@@ -82,7 +81,7 @@ open class VisitableView: UIView {
         refreshControl.removeFromSuperview()
     }
 
-    func refresh(_ sender: AnyObject) {
+    @objc func refresh(_ sender: AnyObject) {
         visitable?.visitableViewDidRequestRefresh()
     }
 
@@ -199,7 +198,11 @@ open class VisitableView: UIView {
     }
 
     private func updateContentInsets() {
-        updateWebViewScrollViewInsets(contentInset ?? hiddenScrollView.contentInset)
+        if #available(iOS 11, *) {
+            updateWebViewScrollViewInsets(contentInset ?? hiddenScrollView.adjustedContentInset)
+        } else {
+            updateWebViewScrollViewInsets(contentInset ?? hiddenScrollView.contentInset)
+        }
     }
 
     private func addFillConstraints(forView view: UIView) {

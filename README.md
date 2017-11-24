@@ -11,7 +11,7 @@
 
 ## Requirements
 
-Turbolinks for iOS is compatible with Xcode 8/Swift 3.0. It requires iOS 8 or higher. The Swift language requires dependencies to be compiled with the same version as the target that includes them. If you need Swift 2.3 compatibility, use the `v1.0.3` release, which is the last release to support Swift 2.3.
+Turbolinks for iOS is written in Swift 4.0 and requires Xcode 9. It should also work with Swift 3.2 as well. It currently supports iOS 8 or higher, but we'll most likely drop iOS 8 support soon.
 
 Web views are backed by [WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) for full-speed JavaScript performance.
 
@@ -52,7 +52,7 @@ Once you’ve started the demo server, explore the demo application in the Simul
 
 ## Getting Started
 
-We recommend playing with the demo app to get familiar with the framework. When you’re ready to start your own application, see our [Quick Start Guide](QuickStartGuide.md) for step-by-step instructions to lay the foundation.
+We recommend playing with the demo app to get familiar with the framework. When you’re ready to start your own application, see our [Quick Start Guide](Docs/QuickStartGuide.md) for step-by-step instructions to lay the foundation.
 
 # Understanding Turbolinks Concepts
 
@@ -82,7 +82,7 @@ func session(session: Session, didFailRequestForVisitable visitable: Visitable, 
 
 Turbolinks calls `session:didFailRequestForVisitable:withError:` when a visit’s network request fails. Use this method to respond to the error by displaying an appropriate message, or by requesting authentication credentials in the case of an authorization failure.
 
-See [Handling Failed Turbolinks Visits](#handling-failed-turbolinks-visits) for more details.
+See [Handling Failed Requests](#handling-failed-requests) for more details.
 
 ## Working with Visitables
 
@@ -305,4 +305,4 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 ---
 
-© 2016 Basecamp, LLC
+© 2017 Basecamp, LLC

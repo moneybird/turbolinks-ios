@@ -34,19 +34,19 @@ class ScriptMessageTest: XCTestCase {
         XCTAssertEqual(message?.identifier, "123")
         XCTAssertEqual(message?.restorationIdentifier, "abc")
         XCTAssertEqual(message?.action, Action.Advance)
-        XCTAssertEqual(message?.location, NSURL(string: "http://turbolinks.test")!)
+        XCTAssertEqual(message?.location, URL(string: "http://turbolinks.test")!)
     }
 }
 
 // Can't instantiate a WKScriptMessage directly
 private class FakeScriptMessage: WKScriptMessage {
-    override var body: AnyObject {
+    override var body: Any {
         return actualBody
     }
     
-    var actualBody: AnyObject
+    var actualBody: Any
     
-    init(body: AnyObject) {
+    init(body: Any) {
         self.actualBody = body
     }
 }

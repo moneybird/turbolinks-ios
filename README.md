@@ -11,7 +11,7 @@
 
 ## Requirements
 
-Turbolinks for iOS is written in Swift 4.0 and requires Xcode 9. It should also work with Swift 3.2 as well. It currently supports iOS 8 or higher, but we'll most likely drop iOS 8 support soon.
+Turbolinks for iOS is written in Swift 5.0 and requires Xcode 10.2. It should also work with Swift 4.2 as well. It currently supports iOS 10 or higher, but we'll be dropping iOS 10 support in the next version.
 
 Web views are backed by [WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) for full-speed JavaScript performance.
 
@@ -192,12 +192,12 @@ func formatTitle(title: String) -> String {
 Implement the optional `sessionDidStartRequest:` and `sessionDidFinishRequest:` methods in your application’s Session delegate to show the global network activity indicator in the status bar while Turbolinks issues network requests.
 
 ```swift
-func sessionDidStartRequest(session: Session) {
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+func sessionDidStartRequest(_ session: Session) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
 }
 
-func sessionDidFinishRequest(session: Session) {
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+func sessionDidFinishRequest(_ session: Session) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
 }
 ```
 
@@ -227,7 +227,7 @@ Your application may require precise control over the web view’s navigation po
 To assign the web view’s `navigationDelegate` property, implement the Session delegate’s optional `sessionDidLoadWebView:` method. Turbolinks calls this method after every “cold boot,” such as on the initial page load and after pulling to refresh the page.
 
 ```swift
-func sessionDidLoadWebView(session: Session) {
+func sessionDidLoadWebView(_ session: Session) {
     session.webView.navigationDelegate = self
 }
 
